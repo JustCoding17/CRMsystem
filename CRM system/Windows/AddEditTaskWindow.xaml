@@ -1,0 +1,437 @@
+﻿<Window x:Class="CRM_system.Windows.AddEditTaskWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CRM_system.Windows"
+        mc:Ignorable="d"
+        Title="Создание/Редактирование задачи" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="55*"/>
+            <RowDefinition Height="431*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="93*"/>
+            <ColumnDefinition Width="707*"/>
+        </Grid.ColumnDefinitions>
+
+        <!--Боковая панель-->
+        <StackPanel Grid.RowSpan="2" 
+        Panel.ZIndex="1">
+
+            <!--Логотип и название-->
+            <Image Source="/Resources/logo2.png" 
+                   Height="65" 
+                   Width="85"
+                   Margin="0 -5 0 -15"/>
+            <TextBlock
+                   FontSize="20"
+                   FontWeight="Medium"
+                   Width="56"
+                   Height="41"
+                   Text="CRM"
+                   Margin="20 0 5 0"
+                   Foreground="#109CF1"/>
+
+            <!--Дашборды-->
+            <Button x:Name="BtnDashboard"  
+                    Width="30"
+                    Height="30" 
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="0 0 0 0"
+                    Click ="BtnDashboard_Click">
+                <Image Source="/Resources/dashboard.png"/>
+            </Button>
+            <TextBlock  x:Name="TblDashboard"
+                        Text="Дашборды"
+                        Margin="30 -30 0 0"
+                        FontSize="10"
+                        FontWeight="Bold"
+                        Foreground="#109CF1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        MouseLeftButtonUp="TblDashboard_MouseLeftButtonUp"/>
+
+            <!--Отзывы клиентов-->
+            <Button x:Name="BtnFeedback"  
+                    Width="30"
+                    Height="30" 
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="0 20 0 0"
+                    Click="BtnFeedback_Click">
+                <Image Source="/Resources/Feedback.png"/>
+            </Button>
+            <TextBlock x:Name="TblFeedback"
+                        Margin="20 -30 0 0"
+                        FontSize="10"
+                        FontWeight="Bold"
+                        Foreground="#109CF1"
+                        HorizontalAlignment="Center"
+                        MouseLeftButtonUp="TblFeedback_MouseLeftButtonUp"
+                        VerticalAlignment="Center"><Run Text="Отзывы "/><LineBreak/><Run Text="клиентов"/></TextBlock>
+
+            <!--Обращения-->
+            <Button x:Name="BtnAppeal"  
+                    Width="30"
+                    Height="30" 
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="0 20 0 0"
+                    Click="BtnAppeal_Click">
+                <Image Source="/Resources/Appeal.png"/>
+            </Button>
+            <TextBlock x:Name="TblAppeal"
+                       Margin="30 -35 0 0"
+                       FontSize="10"
+                       FontWeight="Bold"
+                       Foreground="#109CF1"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Text="Обращения"
+                       MouseLeftButtonUp="TblAppeal_MouseLeftButtonUp"/>
+            <!--Задачи-->
+            <Button x:Name="BtnTask"  
+                    Width="30"
+                    Height="30" 
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="0 20 0 0"
+                    Click="BtnTask_Click">
+                <Image Source="/Resources/Tasks.png"/>
+            </Button>
+            <TextBlock x:Name="TblTask"
+                       Margin="10 -30 0 0"
+                       FontSize="10"
+                       FontWeight="Bold"
+                       Foreground="#109CF1"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Text="Задачи"
+                       MouseLeftButtonUp="TblTask_MouseLeftButtonUp"/>
+
+            <!--Тех.поддержка-->
+            <Button x:Name="BtnTechSupport"  
+                    Width="30"
+                    Height="30" 
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="0 20 0 0"
+                    Click="BtnTechSupport_Click">
+                <Image Source="/Resources/TechSupport.png"/>
+            </Button>
+            <TextBlock x:Name="TblTechSupport"
+                        Margin="25 -30 0 0"
+                        FontSize="10"
+                        FontWeight="Bold"
+                        Foreground="#109CF1"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        MouseLeftButtonUp="TblTechSupport_MouseLeftButtonUp"
+        ><Run Text="Тех."/><LineBreak/><Run Text="поддержка"/></TextBlock>
+
+            <!--Сотрудники-->
+            <Button x:Name="BtnEmployee"  
+                    Width="30"
+                    Height="30" 
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    Margin="0 20 0 0"
+                    Visibility="Collapsed"
+                    IsEnabled="False"
+                    Click="BtnEmployee_Click">
+                <Image Source="/Resources/Empl.png"/>
+            </Button>
+            <TextBlock x:Name="TblEmployee"
+                       Margin="30 -30 0 0"
+                       FontSize="10"
+                       FontWeight="Bold"
+                       Foreground="#109CF1"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       Text="Сотрудники"
+                       Visibility="Collapsed"
+                       IsEnabled="False"
+                       MouseLeftButtonUp="TblEmployee_MouseLeftButtonUp"/>
+        </StackPanel>
+
+        <Border BorderThickness="1"
+                Background="#FFF3F3" 
+                Grid.RowSpan="2" />
+
+        <!--Верхняя панель-->
+        <StackPanel Grid.RowSpan="1" 
+                    Panel.ZIndex="1" 
+                    Grid.ColumnSpan="2" 
+                    Margin="85,0,0,0">
+
+            <!--Выход-->
+            <Button x:Name="BtnExit"  
+                    Width="30"
+                    Height="30" 
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="640 3 0 0"
+                    Click="BtnExit_Click">
+                <Image Source="/Resources/Logout.png"/>
+            </Button>
+            <TextBlock x:Name="TblExit"
+                       Text="Выход"
+                       Margin="635 -5 0 0"
+                       FontSize="10"
+                       FontWeight="Medium"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       MouseLeftButtonUp="TblExit_MouseLeftButtonUp"/>
+
+            <!--Профиль-->
+            <Button x:Name="BtnProfile"  
+                    Width="30"
+                    Height="30" 
+                    Background="{x:Null}"
+                    BorderBrush="{x:Null}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="510 -45 0 0"
+                    Click="BtnProfile_Click">
+                <Image Source="/Resources/Profile.png"/>
+            </Button>
+            <TextBlock x:Name="TblProfile"
+                       Text="Профиль"
+                       Margin="510 -13 0 0"
+                       FontSize="10"
+                       FontWeight="Medium"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"
+                       MouseLeftButtonUp="TblProfile_MouseLeftButtonUp"/>
+            <!--Поиск-->
+            <TextBlock Text="Создание/Редактирование задания"
+                       Margin="-120 -33 0 0"
+                       FontSize="20"
+                       FontWeight="Medium"
+                       Foreground="#FFE8E8E8"
+                       HorizontalAlignment="Center"
+                       VerticalAlignment="Center"/>
+        </StackPanel>
+        <Border BorderThickness="1"
+                Background="#6DBDEE" 
+                Grid.ColumnSpan="2" 
+                Margin="90,0,-1,0"/>
+
+        <StackPanel VerticalAlignment="Top"
+                    Height="28"
+                    Width="705"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Margin="0 0 0 0"
+                    Orientation="Horizontal">
+            <Button x:Name = "BtnCansel"
+                    Height="25"
+                    Width="85"
+                    BorderBrush="{x:Null}"                   
+                    Content = "Задания"                
+                    Margin = "15 0 0 0"
+                    Background="{x:Null}"
+                    FontSize="14"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Click="BtnCansel_Click"/>
+            <Button x:Name = "BtnSave"
+                    Height="25"
+                    Width="75"
+                    BorderBrush="{x:Null}"                   
+                    Content = "Сохранить"                
+                    Margin = "15 0 0 0"
+                    Background="{x:Null}"
+                    FontSize="14"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    Click="BtnSave_Click"/>
+            <Button Height="25"
+                    Width="50"
+                    BorderBrush="{x:Null}"                   
+                    Content = "Статус:"                
+                    Margin = "15 0 0 0"
+                    Background="{x:Null}"
+                    FontSize="14"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"/>
+            <ComboBox x:Name = "CmbStatus"
+                    Height="25"
+                    Width="150"
+                    BorderBrush="{x:Null}"                 
+                    Margin = "5 0 0 0"
+                    Background="{x:Null}"
+                    FontSize="14"                    
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"/>
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Top"
+                    Height="1"
+                    Width="705"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Margin="0 30 0 0">
+            <Line X1="705" Stroke="Black"/>
+        </StackPanel>
+        <StackPanel VerticalAlignment="Top"
+                    HorizontalAlignment="Left"
+                    Height="180"
+                    Width="380"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Margin="10 40 0 0">
+
+            <!--Информация об обращении-->
+            <Border Height="180"
+                    Width="380"
+                    BorderBrush="Black"
+                    BorderThickness="0.9"
+                    CornerRadius="2">
+                <StackPanel>
+
+                    <TextBlock Text="Информация о задании"
+                               FontWeight="Medium"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Top"
+                               IsEnabled="False"/>
+
+                    <TextBlock Text="Номер:"
+                    FontWeight="Medium"
+                    FontSize="14"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    IsEnabled="False"
+                    Margin="15 15 0 0"/>
+                    <TextBox x:Name="TbNumber"                   
+                    FontWeight="Medium"
+                    Width="150"
+                    BorderBrush="Black"
+                    BorderThickness="0.7"
+                    FontSize="14"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top" 
+                    MaxLength="7"
+                    Margin="105 -18 0 0"/>
+                    <TextBlock Text="Приоритет:"
+                    FontWeight="Medium"
+                    FontSize="14"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    IsEnabled="False"
+                    Margin="15 15 0 0"/>
+                    <ComboBox x:Name="CmbPriority"                   
+                    FontWeight="Medium"
+                    Width="50"
+                    BorderBrush="Black"
+                    BorderThickness="0.7"
+                    FontSize="14"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"                   
+                    Margin="105 -18 0 0"/>
+
+                    <TextBlock Text="Сотрудник:"
+                    FontWeight="Medium"
+                    FontSize="14"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    IsEnabled="False"
+                    Margin="15 15 0 0"/>
+                    <TextBox x:Name="TbEmployee"                   
+                    FontWeight="Medium"
+                    Width="150"
+                    PreviewTextInput="TbEmployee_PreviewTextInput"
+                    BorderBrush="Black"
+                    BorderThickness="0.7"
+                    FontSize="14"
+                    MaxLength="40"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"                   
+                    Margin="105 -18 0 0"/>
+
+                    <TextBlock Text="Обращение:"
+                    FontWeight="Medium"
+                    FontSize="14"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    IsEnabled="False"
+                    Margin="15 15 0 0"/>
+                    <TextBox x:Name="TbAppeal"                   
+                    FontWeight="Medium"
+                    Width="150"
+                    BorderBrush="Black"
+                    BorderThickness="0.7"
+                    FontSize="14"
+                    MaxLength="7"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    Margin="105 -18 0 0"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Top"
+                    HorizontalAlignment="Right"
+                    Height="180"
+                    Width="280"
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Margin="0 40 10 0">
+
+            <Border Height="180"
+                    Width="280"
+                    BorderBrush="Black"
+                    BorderThickness="0.9"
+                    CornerRadius="2">
+                <StackPanel>
+                    <TextBlock Text="Комментарий к заданию"
+                    FontWeight="Medium"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"
+                    IsEnabled="False"/>
+                    <TextBox x:Name="TbComment"                   
+                    FontWeight="Medium"
+                    Width="250"
+                    Height="140"
+                    BorderBrush="Black"
+                    BorderThickness="0.7"
+                    FontSize="14"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Top"                   
+                    Margin="0 15 0 0"
+                    TextWrapping="Wrap"
+                    VerticalScrollBarVisibility="Auto"
+                    AcceptsReturn="True"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+
+    </Grid>
+</Window>

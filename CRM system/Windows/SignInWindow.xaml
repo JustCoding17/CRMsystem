@@ -1,0 +1,104 @@
+﻿<Window x:Class="CRM_system.Windows.SignInWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CRM_system.Windows"
+        mc:Ignorable="d"
+        Title="Авторизация" Height="500" Width="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Grid Background="White">
+        <WrapPanel
+            Panel.ZIndex="1"
+            Margin="270,84,270,311">
+            <Image Source="/Resources/logo2.png" 
+                   Height="85" 
+                   Width="85"/>
+            <TextBlock
+                   FontSize="18"
+                   FontWeight="Medium"
+                   Width="120"
+                   Height="85"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Center"
+                   Margin="5 10 25 -18"
+                   ><Run Text="Customer"/><LineBreak/><Run Text="relationship"/><LineBreak/><Run Text="management"/></TextBlock>
+        </WrapPanel>
+        <StackPanel Panel.ZIndex="1"
+                    Margin="270,173,270,75">
+            <TextBox   x:Name = "TbLogin"
+                       Height="30"
+                       Width="210"
+                       Margin = "0 40 0 0"
+                       HorizontalContentAlignment="Left"
+                       VerticalContentAlignment="Center"                              
+                       FontSize="14"/>
+            <PasswordBox   x:Name = "PbPassword"
+                       Height="30"
+                       Width="210"
+                       Margin = "0 30 0 0"
+                       HorizontalContentAlignment="Left"
+                       VerticalContentAlignment="Center"
+                       PasswordChar="*"
+                       FontSize="14"/>
+            <TextBox Name="TbPassword" Visibility="Collapsed" 
+                     Height="30"
+                     Width="210"
+                     Margin = "0 30 0 0" 
+                     HorizontalContentAlignment="Left"
+                     VerticalContentAlignment="Center" 
+                     FontSize="14"/>
+            <WrapPanel Height="20"
+                       Width="210"
+                       Margin="10 10 10 10">
+                <CheckBox Height="15"
+                          Width="15"
+                          Margin="0 0 10 0"
+                          Name="showPassword" 
+                          HorizontalAlignment="Center"
+                          VerticalAlignment="Center"
+                          Unchecked="ShowPassword_Unchecked"  
+                          Checked="ShowPassword_Checked">
+                    <CheckBox.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="2"></Setter>
+                        </Style>
+                    </CheckBox.Resources>
+                </CheckBox>
+                <TextBlock Height="20" 
+                           Width="120" 
+                           Text="Показать пароль"
+                           FontSize="15"
+                           TextAlignment="Center"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"/>
+            </WrapPanel>
+
+            <Button x:Name = "BtnSignIn"
+                    Height="20"
+                    Width="90"
+                    BorderBrush="Black"
+                    BorderThickness="0.5"
+                    Content = "Вход в ситему"                
+                    Margin = "0 10 15 0"
+                    Click="BtnSignIn_Click"
+                    Background="#109CF1"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Bottom">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="2"></Setter>
+                    </Style>
+                </Button.Resources>
+            </Button>
+        </StackPanel>
+        <Border 
+            BorderThickness="1"
+            CornerRadius="10"
+            Opacity="0.5"
+            Margin="270,75,270,75"
+            Background="LightGray" RenderTransformOrigin="0.5,0.5">
+        </Border>
+    </Grid>
+</Window>
